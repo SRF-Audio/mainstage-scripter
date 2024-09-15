@@ -1,6 +1,6 @@
 /*
 This sequencer assumes that you will use Sets as a "song", and Patches as "sections of a song."
-The IAC Bus must be active in Audio MIDI Setup
+The IAC Bus must be active in Audio MIDI Setup.
 
 In the changes objects, each key is the Beat Position. I've made comments to show how those correspond with Bar values. 
 As it is currently written, this could go at the Concert level, and sequence an entire show.
@@ -36,6 +36,11 @@ function Reset() {
 function ProcessMIDI() {
     var timingInfo = GetTimingInfo();
     
+    // Only process if the engine is currently playing
+    if (!timingInfo.playing) {
+        return;  // Do nothing if playback is stopped
+    }
+
     // Set the first exact downbeat if it hasn't been set yet
     if (firstBeat === null) {
         firstBeat = Math.floor(timingInfo.blockStartBeat);  // Find the first full beat (align with host timeline)
