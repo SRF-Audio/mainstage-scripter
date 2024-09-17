@@ -7,7 +7,7 @@ As it is currently written, this could go at the Concert level, and sequence an 
 
 An alternate approach is to save a version of the script, per song, and put them at the Set level.
 If you use that approach, then bankLSB will be identical for the whole changes array.
-IMPORTANT: bankMSB will *always* be zero. BankLSB selects the Set bank.
+IMPORTANT: bankMSB will *always* be zero, unless you manually change it in the Concert/Set/Patch attributes. BankLSB selects the Set bank by default.
 */
 
 // SEQUENCER
